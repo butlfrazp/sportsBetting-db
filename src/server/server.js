@@ -40,7 +40,15 @@ app.get('/mlb/regular/upcoming', (req, res) => {
   const data = MLB_REGULAR_SEASON_2018.fullgameschedule.gameentry;
   const filteredGames = findFutureGames(data);
   res.send(filteredGames);
-})
+});
+
+app.get('/mlb/regular/upcoming/first5', (req, res) => {
+  getRegularSeason();
+  const data = MLB_REGULAR_SEASON_2018.fullgameschedule.gameentry;
+  const filteredGames = findFutureGames(data);
+  console.log("Paul: ", filteredGames.slice(0, 5).length);
+  res.send(filteredGames.slice(0, 6));
+});
 
 app.use(function (req,res) {
     res.render('404', {url:req.url});
