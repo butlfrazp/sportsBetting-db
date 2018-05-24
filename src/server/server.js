@@ -46,7 +46,7 @@ app.get('/mlb/regular/upcoming/first5', (req, res) => {
   getRegularSeason();
   const data = MLB_REGULAR_SEASON_2018.fullgameschedule.gameentry;
   const filteredGames = findFutureGames(data);
-  if (filteredGames.length > 5) {
+  if (filteredGames.length <= 5) {
     res.send(filteredGames)
   }else{
     res.send(filteredGames.slice(0, 5));
