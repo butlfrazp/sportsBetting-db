@@ -12,7 +12,9 @@ function findFutureGames(data) {
     const hour = AMPM == "PM" && parseInt(HM[0]) != 12 ? parseInt(HM[0]) + 12 : parseInt(HM[0]);
 
     const date = moment([parseInt(YMD[0]), parseInt(YMD[1]) - 1, parseInt(YMD[2]), hour, parseInt(minute), 0, 0]);
-    if (date.toDate().getTime() > now) {
+    const eventDate = date.toDate().getTime()
+    if (eventDate > now) {
+      e.dateInMill = eventDate
       return e;
     }
   });
