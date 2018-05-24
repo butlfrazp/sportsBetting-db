@@ -14,7 +14,7 @@ function findFutureGames(data) {
     const date = moment([parseInt(YMD[0]), parseInt(YMD[1]) - 1, parseInt(YMD[2]), hour, parseInt(minute), 0, 0]);
     const eventDate = date.toDate().getTime()
     if (eventDate > now) {
-      e.dateInMill = eventDate
+      e.unixDate = date.unix();
       return e;
     }
   });
